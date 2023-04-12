@@ -14,9 +14,10 @@ download_count = 1
 
 #lock = threading.Lock()
 def onProgress(stream, chunk, remains):
-        total = stream.filesize
-        percent = (total-remains) / total * 100
-        print('下載中… {:05.2f}%'.format(percent), end='\r',file=sys.stderr)
+    total = stream.filesize
+    percent = (total-remains) / total * 100
+    print('下載中… {:05.2f}%'.format(percent), end='\r')
+   
 
 def get_list(playlist) -> Playlist:
     p = Playlist(playlist)
@@ -34,6 +35,7 @@ def Download(link):
       
             
     print("Download is completed successfully")
+    
 # 檢查影片檔是否包含聲音
 def check_media(filename):
     r = subprocess.Popen(["ffmpeg\\bin\\ffprobe", filename],
@@ -103,24 +105,24 @@ def onComplete(stream, file_path):
         # 合併聲音檔
         merge_media()
        
-def playlist(downloadbypl,link):
-    if downloadbypl == "y":
+def playlist(link,no):
+   # if downloadbypl == "y":
         
-        playlist = input("pleas enter the playlist\n")
-        p= get_list(playlist)
-        no=int(input("the number of start\n1 start from first\n"))
+        #playlist = input("pleas enter the playlist\n")
+        p= get_list(link)
+        #no=int(input("the number of start\n1 start from first\n"))
         if no == 1:
             for url in p.video_urls: 
                 download_count = 1
-                Download(url,0)
+                Download(url)
         else:
             no = no-1
             for i in range (no,len(p.video_urls)):
                 download_count = 1
-                Download(p.video_urls[i],0) 
+                Download(p.video_urls[i]) 
             
-    elif downloadbypl == "n":
-        link = input("Enter the YouTube video URL: ")
-        Download(link)
+   # elif downloadbypl == "n":
+   #     link = input("Enter the YouTube video URL: ")
+   #     Download(link)
 
 

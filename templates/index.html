@@ -3,13 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Youtube</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
   </head>
   <body>
-    <h1> Youtube downloader <h1>
-      <form class="" action="/submit" method="post">
-        <label for="">Enter Url : </label>
-        <input type="text" name="link" value="">
-        <button type="submit">Submit</button>
-      </form>
+    <div style="padding: 20px;">
+      <h1> Youtube downloader <h1>
+    </div>
+          <form action="/submit" method="post">
+            <p>Youtube URL</p>
+            <input type="text" name="link" style="width: 80%;" required>
+            <p>If is play list. Please enter the start no and check the box</p>
+            <input type="text" name="no" style="width: 80%;" >
+            <div style="margin-top: 10px;">
+                <input type="checkbox" name="playlist">playlist
+            </div>
+            <div style="margin-top: 10px;">
+                <input type="submit" value="Download ">
+            </div>
+        </form>
+      </div>
+
   </body>
 </html>
